@@ -1,0 +1,9 @@
+# Ignora todas as pastas de dependências
+**/node_modules
+
+# Ignora todos os arquivos de ambiente
+**/.env
+
+# Ignora arquivos de log do frontend Vite
+**/dist
+**/.vite
