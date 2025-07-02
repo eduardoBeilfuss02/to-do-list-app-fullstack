@@ -31,7 +31,7 @@ const RegisterPage = () => {
     // axios é usado para fazer uma requisição POST para o endpoint de registro
     // Se o registro for bem-sucedido, o usuário é redirecionado para a página de login
     try {
-      await axios.post('http://localhost:3000/api/auth/register', {
+      await axios.post('https://to-do-list-app-backend-api.onrender.com/api/auth/register', {
         nome,
         user,
         senha,

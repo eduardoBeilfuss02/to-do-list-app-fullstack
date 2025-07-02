@@ -76,8 +76,8 @@ const TasksPage = () => {
         // As requisições são feitas para o backend da aplicação, que deve estar rodando na porta 3000
         // As respostas são armazenadas nos estados tasks e notifications
         const apiHeaders = { headers: { Authorization: `Bearer ${token}` } };
-        const tasksRequest = axios.get('http://localhost:3000/api/tasks', apiHeaders);
-        const notificationsRequest = axios.get('http://localhost:3000/api/notifications', apiHeaders);
+        const tasksRequest = axios.get('https://to-do-list-app-backend-api.onrender.com/api/tasks', apiHeaders);
+        const notificationsRequest = axios.get('https://to-do-list-app-backend-api.onrender.com/api/notifications', apiHeaders);
 
         const [tasksResponse, notificationsResponse] = await Promise.all([tasksRequest, notificationsRequest]);
 
@@ -106,7 +106,7 @@ const TasksPage = () => {
     try {
       const token = localStorage.getItem('authToken');
       const response = await axios.post(
-        'http://localhost:3000/api/tasks',
+        'https://to-do-list-app-backend-api.onrender.com/api/tasks',
         {
           titulo: newTodoTitle,
           descricao: newTodoDescription,
@@ -128,7 +128,7 @@ const TasksPage = () => {
   const handleDeleteTask = async (id: number) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`http://localhost:3000/api/tasks/${id}`, {
+      await axios.delete(`https://to-do-list-app-backend-api.onrender.com/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(tasks.filter(task => task.id !== id));
@@ -147,7 +147,7 @@ const TasksPage = () => {
     try {
       const token = localStorage.getItem('authToken');
       await axios.put(
-        `http://localhost:3000/api/tasks/${taskToUpdate.id}`,
+        `https://to-do-list-app-backend-api.onrender.com/api/tasks/${taskToUpdate.id}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -190,7 +190,7 @@ const TasksPage = () => {
         prazo: editingTaskData.prazo || null
       };
       await axios.put(
-        `http://localhost:3000/api/tasks/${selectedTask.id}`, // Atualiza a tarefa com os novos dados
+        `https://to-do-list-app-backend-api.onrender.com/api/tasks/${selectedTask.id}`, // Atualiza a tarefa com os novos dados
         dataToUpdate,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -210,7 +210,7 @@ const TasksPage = () => {
   const handleMarkNotificationAsRead = async (notificationId: number) => {
     try {
         const token = localStorage.getItem('authToken');
-        await axios.patch(`http://localhost:3000/api/notifications/${notificationId}/read`, 
+        await axios.patch(`https://to-do-list-app-backend-api.onrender.com/api/notifications/${notificationId}/read`, 
             {},
             { headers: { Authorization: `Bearer ${token}` } }
         );

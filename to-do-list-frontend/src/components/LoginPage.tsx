@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     // Verifica se os campos de usuário e senha estão preenchidos
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await axios.post('https://to-do-list-app-backend-api.onrender.com/api/auth/login', {
         user,
         senha,
       });
